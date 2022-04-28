@@ -18,7 +18,15 @@ T* make_unique(T t) {  return new T { t };}
 
 template <typename T>
 UniquePtr<T>::UniquePtr(const UniquePtr& ptr){
-    
+    throw std::logic_error ("cant copy uniqueptr !");
+}
+template <typename T>
+UniquePtr<T>& UniquePtr<T>::operator=(const UniquePtr<T>& ptr){
+    throw std::logic_error ("cant copy uniqueptr !");
 }
 
+template <typename T>
+T UniquePtr<T>::operator*()const{
+    return *_p;
+}
 

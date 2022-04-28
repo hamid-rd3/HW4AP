@@ -5,10 +5,12 @@
 #include <memory>
 int main(int argc, char** argv)
 {
-    if (true) // make false to run unit-tests
+    if (false) // make false to run unit-tests
     {
         int x { 10 };
-         int* y { make_unique<int>(x)};
+          UniquePtr<int> ptr{new int{10}};
+        std::cout << *ptr << std::endl;
+         
     } else {
         ::testing::InitGoogleTest(&argc, argv);
         std::cout << "RUNNING TESTS ..." << std::endl;
