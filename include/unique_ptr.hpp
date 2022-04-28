@@ -25,12 +25,3 @@ UniquePtr<T>& UniquePtr<T>::operator=(const UniquePtr<T>& ptr){
     throw std::logic_error ("cant copy uniqueptr !");
 }
 
-template <typename T>
-T UniquePtr<T>::operator*()const{
-    return *_p;
-}
-
-template <typename T>
-T* UniquePtr<T>::operator->()const{
-    return _p;
-}

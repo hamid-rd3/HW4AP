@@ -9,9 +9,10 @@ public:
     ~UniquePtr();
     UniquePtr(const UniquePtr& ptr);
     T* get()const{return _p;};
-    T operator*()const;
-    T* operator-> ()const;
+    T operator*()const{return *_p;};
+    T* operator-> ()const{return _p;};
     UniquePtr& operator=(const UniquePtr& ptr);
+    void reset(){this->~UniquePtr();}
     // friend T* make_unique(T t) {  return new T { t };}
 private:
     T* _p;
