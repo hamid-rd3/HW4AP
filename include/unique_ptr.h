@@ -10,6 +10,7 @@ public:
     UniquePtr(const UniquePtr& ptr);
     T* get()const{return _p;};
     T operator*()const;
+    T* operator-> ()const;
     UniquePtr& operator=(const UniquePtr& ptr);
     // friend T* make_unique(T t) {  return new T { t };}
 private:
