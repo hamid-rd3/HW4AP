@@ -5,7 +5,7 @@
 #include <memory>
 int main(int argc, char** argv)
 {
-    if (true) // make false to run unit-tests
+    if (false) // make false to run unit-tests
     {
         SharedPtr<int> ptr1 { make_shared<int>(10) };
         std::cout << ptr1.use_count() << std::endl; // output: 1

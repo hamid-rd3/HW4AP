@@ -11,6 +11,8 @@ public:
     T* get()const{return _p;}
     SharedPtr<T>& operator=(SharedPtr<T>& ptr);
     const size_t use_count()const;
+    T operator*()const{return *_p;}
+    T* operator->()const{return _p;};
 private:
     T* _p;
     size_t cnt{};
