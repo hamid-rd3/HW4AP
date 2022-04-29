@@ -7,9 +7,8 @@ int main(int argc, char** argv)
 {
     if (false) // make false to run unit-tests
     {
-        UniquePtr<int> ptr { make_unique<int>(3) };
-        if (ptr.get())
-            std::cout << "asdasd" << std::endl;
+        SharedPtr<int> ptr1{new int{10}};
+         SharedPtr<int> ptr2{ptr1};
 
     } else {
         ::testing::InitGoogleTest(&argc, argv);

@@ -7,7 +7,9 @@ public:
     SharedPtr();
     SharedPtr(T* ptr);
     ~SharedPtr();
+    SharedPtr(SharedPtr<T>& ptr);
     T* get(){return _p;}
+    SharedPtr<T>& operator=(SharedPtr<T>& ptr);
 private:
     T* _p;
 };

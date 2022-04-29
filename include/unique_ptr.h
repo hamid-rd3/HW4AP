@@ -7,11 +7,11 @@ public:
     UniquePtr(T* p);
     UniquePtr();
     ~UniquePtr();
-    UniquePtr(const UniquePtr& ptr);
+    UniquePtr(const UniquePtr<T>& ptr);
     T* get()const{return _p;};
     T operator*()const{return *_p;};
     T* operator-> ()const{return _p;};
-    UniquePtr& operator=(const UniquePtr& ptr);
+    UniquePtr<T>& operator=(const UniquePtr<T>& ptr);
     void reset(){this->~UniquePtr();}
     void reset(T* ptr );
     operator bool()const;
