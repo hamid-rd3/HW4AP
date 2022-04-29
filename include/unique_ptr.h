@@ -15,6 +15,7 @@ public:
     void reset(){this->~UniquePtr();}
     void reset(T* ptr );
     operator bool()const;
+    T* release();
     // friend bool operator()();
     // friend T* make_unique(T t) ;
 private:

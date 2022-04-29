@@ -42,9 +42,12 @@ T* make_unique(T t) {  return new T { t };}
 // }
 template <typename T>
 UniquePtr<T>::operator bool()const{
-    if(_p==nullptr)
-        return false;
-    else 
-        return true;
-    
+    return (_p==nullptr)? false:true;
+}
+
+template <typename T>
+T* UniquePtr<T>::release(){
+    T* __p=_p;
+    _p=nullptr;   
+    return __p;
 }
