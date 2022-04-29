@@ -1,15 +1,15 @@
 template <typename T>
 SharedPtr<T>::SharedPtr(T* ptr)
     : _p { ptr }
-    
 {
-    cnt++;
+    cnt = new size_t { 1 };
 }
 
 template <typename T>
 SharedPtr<T>::SharedPtr()
 {
     _p = nullptr;
+    cnt = new size_t { 0 };
 }
 
 template <typename T>
@@ -20,16 +20,21 @@ T* make_shared(T t)
 
 template <typename T>
 SharedPtr<T>::~SharedPtr()
-{   if(!_p){
-    cnt=0;
-    delete _p;
-    _p = nullptr;}
+{
+    if (!_p) {
+        delete cnt;
+        cnt=nullptr;
+        delete _p;
+        _p = nullptr;
+    }
 }
 
 template <typename T>
-SharedPtr<T>::SharedPtr(SharedPtr<T>& ptr): _p {ptr.get()}
+SharedPtr<T>::SharedPtr(SharedPtr<T>& ptr)
+    : _p { ptr.get() }
+    , cnt { ptr.cnt }
 {
-    cnt+=(++ptr.cnt);
+    (*cnt)++;
 }
 
 template <typename T>
@@ -40,7 +45,7 @@ SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>& ptr)
 }
 
 template <typename T>
-const size_t SharedPtr<T>::use_count()const{
-    return cnt;
+const size_t& SharedPtr<T>::use_count() const
+{
+    return *cnt;
 }
-

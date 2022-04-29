@@ -7,11 +7,12 @@ int main(int argc, char** argv)
 {
     if (false) // make false to run unit-tests
     {
-        SharedPtr<int> ptr1 { make_shared<int>(10) };
-        std::cout << ptr1.use_count() << std::endl; // output: 1
-        SharedPtr<int> ptr2 { ptr1 };
-        std::cout << ptr1.use_count() << std::endl; // output: 2
-        std::cout << ptr2.use_count() << std::endl; // output: 2
+    SharedPtr<std::string> ptr1{make_shared<std::string>("hello world!")};
+    SharedPtr<std::string> ptr2{ptr1};
+    SharedPtr<std::string> ptr3{ptr1};
+     SharedPtr<std::string> ptr4{ptr1};
+
+    std::cout <<ptr1.use_count()<<ptr2.use_count()<<ptr3.use_count()<< ptr4.use_count()<< std::endl;
 
     } else {
         ::testing::InitGoogleTest(&argc, argv);
