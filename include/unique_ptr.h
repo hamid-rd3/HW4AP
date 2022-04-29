@@ -21,10 +21,6 @@ public:
 private:
     T* _p;
 };
-
-
-
-
 #include <unique_ptr.hpp>
 
 #endif // UNIQUE_PTR

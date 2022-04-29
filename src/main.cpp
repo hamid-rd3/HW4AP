@@ -7,11 +7,10 @@ int main(int argc, char** argv)
 {
     if (false) // make false to run unit-tests
     {
-       UniquePtr<int> ptr {make_unique<int>(3)};
-       if( ptr.get())
-            std::cout<<"asdasd"<<std::endl;
+        UniquePtr<int> ptr { make_unique<int>(3) };
+        if (ptr.get())
+            std::cout << "asdasd" << std::endl;
 
-         
     } else {
         ::testing::InitGoogleTest(&argc, argv);
         std::cout << "RUNNING TESTS ..." << std::endl;
