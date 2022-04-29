@@ -8,10 +8,12 @@ public:
     SharedPtr(T* ptr);
     ~SharedPtr();
     SharedPtr(SharedPtr<T>& ptr);
-    T* get(){return _p;}
+    T* get()const{return _p;}
     SharedPtr<T>& operator=(SharedPtr<T>& ptr);
+    const size_t use_count()const;
 private:
     T* _p;
+    size_t cnt{};
 };
 
 #include <shared_ptr.hpp>

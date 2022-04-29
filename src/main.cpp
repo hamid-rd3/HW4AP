@@ -5,10 +5,13 @@
 #include <memory>
 int main(int argc, char** argv)
 {
-    if (false) // make false to run unit-tests
+    if (true) // make false to run unit-tests
     {
-        SharedPtr<int> ptr1{new int{10}};
-         SharedPtr<int> ptr2{ptr1};
+        SharedPtr<int> ptr1 { make_shared<int>(10) };
+        std::cout << ptr1.use_count() << std::endl; // output: 1
+        SharedPtr<int> ptr2 { ptr1 };
+        std::cout << ptr1.use_count() << std::endl; // output: 2
+        std::cout << ptr2.use_count() << std::endl; // output: 2
 
     } else {
         ::testing::InitGoogleTest(&argc, argv);
