@@ -13,8 +13,6 @@ UniquePtr<T>::~UniquePtr(){
     _p=nullptr;
 }
 
-template <typename T>
-T* make_unique(T t) {  return new T { t };}
 
 template <typename T>
 UniquePtr<T>::UniquePtr(const UniquePtr& ptr){
@@ -25,3 +23,28 @@ UniquePtr<T>& UniquePtr<T>::operator=(const UniquePtr<T>& ptr){
     throw std::logic_error ("cant copy uniqueptr !");
 }
 
+template<typename T>
+void UniquePtr<T>::reset(T* ptr){
+    delete _p;
+    _p=ptr;    
+}
+
+template <typename T>
+T* make_unique(T t) {  return new T { t };}
+
+// template <typename T>
+// bool operator()(const UniquePtr<T>& ptr) {
+//     if(ptr.get()==nullptr)
+//         return false;
+//     else {
+//         return true;
+//     }
+// }
+template <typename T>
+UniquePtr<T>::operator bool()const{
+    if(_p==nullptr)
+        return false;
+    else 
+        return true;
+    
+}

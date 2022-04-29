@@ -57,7 +57,7 @@ TEST(HW4Test, TEST6) {
     ptr.reset();
     EXPECT_EQ(ptr.get(), nullptr);
 }
-/*
+
 TEST(HW4Test, TEST7) {
     UniquePtr<std::string> ptr{new std::string{"hello world!"}};
     EXPECT_EQ(ptr->length(), 12);
@@ -72,7 +72,7 @@ TEST(HW4Test, TEST8) {
         ptr.reset();
     EXPECT_FALSE(ptr);
 }
-
+/*
 TEST(HW4Test, TEST9) {
     UniquePtr<double> ptr{new double{1.567}};
     EXPECT_DOUBLE_EQ(*ptr, 1.567);

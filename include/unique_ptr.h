@@ -13,7 +13,10 @@ public:
     T* operator-> ()const{return _p;};
     UniquePtr& operator=(const UniquePtr& ptr);
     void reset(){this->~UniquePtr();}
-    // friend T* make_unique(T t) {  return new T { t };}
+    void reset(T* ptr );
+    operator bool()const;
+    // friend bool operator()();
+    // friend T* make_unique(T t) ;
 private:
     T* _p;
 };
