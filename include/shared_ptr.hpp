@@ -21,11 +21,15 @@ T* make_shared(T t)
 template <typename T>
 SharedPtr<T>::~SharedPtr()
 {
-    if (!_p) {
-        delete cnt;
-        cnt=nullptr;
+  if((*cnt)>1)
+    {
+        (*cnt)--;
+        _p=nullptr;
+    }
+    else if ((*cnt)==1){
         delete _p;
-        _p = nullptr;
+        _p=nullptr;
+        (*cnt)=0;
     }
 }
 
