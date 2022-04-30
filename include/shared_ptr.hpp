@@ -44,12 +44,34 @@ SharedPtr<T>::SharedPtr(SharedPtr<T>& ptr)
 template <typename T>
 SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>& ptr)
 {
+    
     delete _p;
-    _p = new T { *ptr.get() };
+    _p=ptr.get();
+    cnt=ptr.cnt;
+    (*cnt)++;
+    return *this;
 }
 
 template <typename T>
 const size_t& SharedPtr<T>::use_count() const
 {
     return *cnt;
+}
+template <typename T>
+void SharedPtr<T>::reset(){
+    delete _p;
+    _p=nullptr;
+    (*cnt)=0;
+}
+
+template <typename T>
+SharedPtr<T>::operator bool()const{
+    return (_p==nullptr)?false:true;
+}
+
+template <typename T>
+void SharedPtr<T>::reset(const T* t){
+    delete _p;
+    _p=new T {*t};
+    (*cnt)=1;
 }

@@ -13,6 +13,9 @@ public:
     const size_t& use_count()const;
     T operator*()const{return *_p;}
     T* operator->()const{return _p;};
+    void reset ();
+    operator bool()const;
+    void reset(const T* t);
 private:
     T* _p;
     size_t* cnt;

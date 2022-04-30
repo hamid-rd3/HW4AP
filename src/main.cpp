@@ -8,7 +8,7 @@ int main(int argc, char** argv)
     if (false) // make false to run unit-tests
     {
     SharedPtr<std::string> ptr1{make_shared<std::string>("hello world!")};
-    SharedPtr<std::string> ptr2{ptr1};
+    SharedPtr<std::string> ptr2=ptr1;
     SharedPtr<std::string> ptr3{ptr1};
      SharedPtr<std::string> ptr4{ptr1};
 
