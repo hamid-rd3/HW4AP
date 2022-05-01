@@ -44,7 +44,8 @@ SharedPtr<T>::SharedPtr(SharedPtr<T>& ptr)
 template <typename T>
 SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>& ptr)
 {
-    
+    if(ptr.get()==_p)
+        return *this;
     delete _p;
     _p=ptr.get();
     cnt=ptr.cnt;
